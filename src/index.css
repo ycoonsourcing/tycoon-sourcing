@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy:      #0a2342;
+  --navy-mid:  #0d2d54;
+  --navy-light:#1a4a7a;
+  --blue:      #1565c0;
+  --blue-mid:  #1976d2;
+  --blue-light:#2196f3;
+  --cyan:      #0288d1;
+  --white:     #ffffff;
+  --off-white: #f8fafc;
+  --gray-50:   #f0f4f8;
+  --gray-100:  #e2e8f0;
+  --gray-400:  #94a3b8;
+  --gray-600:  #475569;
+  --gray-900:  #0f172a;
+}
+
+* { box-sizing: border-box; }
+body { font-family: 'Inter', -apple-system, sans-serif; }
+
+/* Custom range slider */
+input[type=range] {
+  -webkit-appearance: none; appearance: none;
+  height: 4px; border-radius: 4px; outline: none; cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px;
+  border-radius: 50%; background: #1565c0;
+  border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  cursor: pointer; transition: transform .15s;
+}
+input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+/* Smooth transitions */
+* { transition-property: color, background-color, border-color; transition-duration: 150ms; }
