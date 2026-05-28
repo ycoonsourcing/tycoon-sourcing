@@ -1,4 +1,4 @@
-﻿name: Deploy to Hostinger
+name: Deploy to Hostinger
 
 on:
   push:
@@ -14,14 +14,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
-      - name: Build
+      - name: Build application
         run: npm run build
 
-      - name: Add SSH key
+      - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.HOSTINGER_SSH_KEY }}" > ~/.ssh/id_rsa
@@ -30,6 +31,9 @@ jobs:
 
       - name: Deploy to Hostinger
         run: |
-          rsync -av -e "ssh -i ~/.ssh/id_rsa -p 65002" \
+          rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -p 65002" \
             dist/ \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }}:/home/${{ secrets.HOSTINGER_USER }}/public_html/
+
+      - name: Deployment Status
+        run: echo "✅ Deployment completed successfully"
