@@ -1,113 +1,175 @@
+// src/pages/AboutPage.jsx
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { Globe, ShieldCheck, Building2, ArrowRight } from 'lucide-react';
+import WarehouseLocations from '../components/WarehouseLocations';
+import './AboutPage.css';
 
 export default function AboutPage() {
-  const navigate = useNavigate();
-  const go = (p) => { navigate(p); window.scrollTo({ top: 0, behavior: 'smooth' }); };
-
   return (
-    <>
-      <Helmet>
-        <title>About — Tycoon Sourcing</title>
-        <meta name="description" content="About Tycoon Sourcing — dual-entity structure, compliance approach, and risk management framework." />
-      </Helmet>
-
-      <section className="pt-32 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <span className="inline-block text-xs font-bold tracking-widest text-blue-400 uppercase border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 rounded-full mb-6">About</span>
-          <h1 className="text-3xl md:text-5xl font-black text-white mb-4">Who we are</h1>
-          <p className="text-xl text-gray-300 font-light">A dual-entity procurement and inventory platform operating across Australia and Sri Lanka.</p>
+    <div className="about-page">
+      <section className="about-hero">
+        <div className="hero-content">
+          <h1>About Tycoon Sourcing</h1>
+          <p className="hero-subtitle">
+            Australia's trusted wholesale trading platform connecting retailers, 
+            resellers, and businesses with quality suppliers and products.
+          </p>
         </div>
       </section>
 
-      <section className="py-10 md:py-16 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-6 space-y-8">
+      <section className="about-mission">
+        <div className="section-container">
+          <h2>Our Mission</h2>
+          <p>
+            To simplify wholesale trading by providing a transparent, efficient, and reliable 
+            platform where businesses can source products directly from trusted suppliers. 
+            We empower retailers and resellers to grow by offering competitive pricing, 
+            fast logistics, and exceptional customer service.
+          </p>
+        </div>
+      </section>
 
-          {/* Dual entity */}
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8">
-            <h2 className="text-2xl font-black text-white mb-6">Company structure</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  code: 'AU', name: 'Tycoon Sourcing', country: 'Australia (Queensland)',
-                  role: 'Capital & client management entity',
-                  items: ['Receives all client payments', 'Funds 80% of all deals', 'Retains profit and manages compliance', 'Registered Australian business (ABN)', 'Operates under Australian Consumer Law', 'AML/CTF compliance (AUSTRAC)'],
-                },
-                {
-                  code: 'SL', name: 'Tycoon Holdings (Pvt) Ltd', country: 'Sri Lanka',
-                  role: 'Operations & warehousing entity',
-                  items: ['Manages procurement from local/regional suppliers', 'Operates warehouse facility', 'Handles inbound goods, CBM measurement, storage', 'Issues GRNs, delivery orders, inventory records', 'Receives cost-reimbursement from AU entity', 'Registered Sri Lankan private company'],
-                },
-              ].map(e => (
-                <div key={e.name} className="bg-slate-900 border border-slate-700 rounded-xl p-6">
-                  <div className="inline-block bg-blue-100 text-blue-700 font-black text-xs px-2.5 py-1 rounded-full mb-3">{e.code}</div>
-                  <h3 className="font-black text-white mb-1">{e.name}</h3>
-                  <div className="text-xs text-gray-500 mb-1">{e.country}</div>
-                  <div className="text-xs font-bold text-blue-400 mb-4">{e.role}</div>
-                  {e.items.map(item => (
-                    <div key={item} className="flex items-start gap-2 py-1.5 border-b border-slate-700/40 last:border-0">
-                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0 mt-1.5" />
-                      <span className="text-sm text-gray-300">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              ))}
+      <section className="about-values">
+        <div className="section-container">
+          <h2>Our Values</h2>
+          <div className="values-grid">
+            <div className="value-card">
+              <div className="value-icon">🤝</div>
+              <h3>Trust</h3>
+              <p>
+                We believe in building long-term relationships based on transparency, 
+                integrity, and reliability in every transaction.
+              </p>
             </div>
-          </div>
-
-          {/* Compliance */}
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8">
-            <h2 className="text-2xl font-black text-white mb-6">Compliance approach</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {[
-                { icon: ShieldCheck, title: 'AML / KYC', desc: 'All clients undergo KYC verification. Supplier KYB checks are mandatory before any deal is funded. Unusual transactions are flagged and reviewed.' },
-                { icon: Building2, title: 'Legal structure', desc: 'The buy-and-sell model is structured to avoid moneylending classification. All agreements use purchase and service fee language, not loan or interest.' },
-                { icon: Globe, title: 'Tax compliance', desc: 'Tycoon Sourcing AU pays Australian corporate tax on net profit. Service fees charged to Sri Lankan clients are GST-free exports of services.' },
-              ].map(c => (
-                <div key={c.title} className="bg-slate-900 rounded-xl p-5">
-                  <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
-                    <c.icon size={20} className="text-blue-400" />
-                  </div>
-                  <h3 className="font-bold text-white mb-2 text-sm">{c.title}</h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">{c.desc}</p>
-                </div>
-              ))}
+            <div className="value-card">
+              <div className="value-icon">⚡</div>
+              <h3>Efficiency</h3>
+              <p>
+                From sourcing to delivery, we streamline the wholesale process to save 
+                you time and reduce operational costs.
+              </p>
             </div>
-          </div>
-
-          {/* Risk management */}
-          <div className="bg-slate-800 border border-slate-700 rounded-2xl p-8">
-            <h2 className="text-2xl font-black text-white mb-6">Risk management framework</h2>
-            <div className="space-y-3">
-              {[
-                { title: 'Goods title retention', desc: 'All inventory remains the legal property of Tycoon Holdings until each batch is fully paid. This is the primary protection against client default.' },
-                { title: 'Deposit protection', desc: '20% client deposit is held throughout the deal. In the event of default, this is retained to offset losses before goods are resold.' },
-                { title: 'Mandatory goods insurance', desc: 'All inventory in the warehouse must be covered by goods-in-storage insurance. This protects against damage, theft, and natural events.' },
-                { title: 'Supplier fraud prevention', desc: 'Suppliers are KYB-verified, independently price-checked, and must supply proforma invoices and bank confirmation letters directly — not via the client.' },
-                { title: 'Fast-moving goods only', desc: 'Tycoon only accepts deals for products with clear, established resale demand. No speculative or illiquid product categories.' },
-                { title: '90-day hard limit', desc: 'All deals have a 90-day maximum collection window. This limits exposure and ensures capital rotates efficiently.' },
-              ].map(r => (
-                <div key={r.title} className="flex gap-4 p-4 bg-slate-900 rounded-xl border border-slate-700">
-                  <div className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0 mt-1.5" />
-                  <div>
-                    <div className="font-bold text-white text-sm mb-1">{r.title}</div>
-                    <div className="text-sm text-gray-400 leading-relaxed">{r.desc}</div>
-                  </div>
-                </div>
-              ))}
+            <div className="value-card">
+              <div className="value-icon">📈</div>
+              <h3>Growth</h3>
+              <p>
+                Your success is our success. We provide the tools and support needed 
+                for your business to scale and thrive.
+              </p>
             </div>
-          </div>
-
-          <div className="text-center pt-4">
-            <button onClick={() => go('/request')} className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all shadow-xl text-lg">
-              Become a client <ArrowRight size={20} />
-            </button>
+            <div className="value-card">
+              <div className="value-icon">🌍</div>
+              <h3>Reach</h3>
+              <p>
+                With warehouses across Australia, we ensure fast, reliable delivery 
+                to retailers and businesses nationwide.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-    </>
+
+      <section className="about-timeline">
+        <div className="section-container">
+          <h2>Our Journey</h2>
+          <div className="timeline">
+            <div className="timeline-item">
+              <div className="timeline-marker">
+                <span className="timeline-year">2020</span>
+              </div>
+              <div className="timeline-content">
+                <h4>Founded</h4>
+                <p>Tycoon Sourcing launches as a digital wholesale trading platform in Brisbane.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-marker">
+                <span className="timeline-year">2021</span>
+              </div>
+              <div className="timeline-content">
+                <h4>Expansion Begins</h4>
+                <p>Opened first regional warehouses in Sydney and Melbourne.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-marker">
+                <span className="timeline-year">2022</span>
+              </div>
+              <div className="timeline-content">
+                <h4>National Coverage</h4>
+                <p>Expanded to 7 strategic locations across Australia for faster delivery.</p>
+              </div>
+            </div>
+            <div className="timeline-item">
+              <div className="timeline-marker">
+                <span className="timeline-year">2024</span>
+              </div>
+              <div className="timeline-content">
+                <h4>Technology Upgrade</h4>
+                <p>Launched new portal with real-time inventory, advanced analytics, and improved user experience.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-warehouses">
+        <div className="section-container">
+          <WarehouseLocations variant="grid" />
+        </div>
+      </section>
+
+      <section className="about-team">
+        <div className="section-container">
+          <h2>Why Choose Us</h2>
+          <div className="why-grid">
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Competitive Pricing</h4>
+              <p>Direct supplier relationships mean better wholesale rates for your business.</p>
+            </div>
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Fast Delivery</h4>
+              <p>7 warehouse locations ensure your orders arrive quickly across Australia.</p>
+            </div>
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Easy Platform</h4>
+              <p>User-friendly interface with real-time inventory, order tracking, and support.</p>
+            </div>
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Flexible Terms</h4>
+              <p>Various payment and pickup options to suit your business needs.</p>
+            </div>
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Professional Support</h4>
+              <p>Dedicated customer service team ready to assist with any questions.</p>
+            </div>
+            <div className="why-item">
+              <span className="why-icon">✓</span>
+              <h4>Secure Transactions</h4>
+              <p>Advanced security and compliance to protect your business and data.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-contact">
+        <div className="section-container contact-cta">
+          <h2>Get in Touch</h2>
+          <p>Have questions? Our team is here to help.</p>
+          <div className="contact-links">
+            <a href="mailto:support@tycoonsourcing.com" className="btn btn-primary">
+              📧 Email Us
+            </a>
+            <a href="tel:1300TYCOON" className="btn btn-secondary">
+              📞 Call Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
