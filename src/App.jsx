@@ -10,8 +10,8 @@ import HowItWorksPage from '@/pages/HowItWorksPage';
 import PricingPage    from '@/pages/PricingPage';
 import CalculatorPage from '@/pages/CalculatorPage';
 import RequestPage    from '@/pages/RequestPage';
-import TrackingPage   from '@/pages/TrackingPage';
 import AboutPage      from '@/pages/AboutPage';
+import FAQPage        from '@/pages/FAQPage';
 import WarehousePage  from '@/pages/WarehousePage';
 import PortalPage     from '@/pages/PortalPage';
 import AdminPage      from '@/pages/AdminPage';
@@ -49,6 +49,7 @@ export default function App() {
             <Route path="request"    element={<RequestPage />} />
             <Route path="tracking"   element={<TrackingPage />} />
             <Route path="about"      element={<AboutPage />} />
+            <Route path="faq"        element={<FAQPage />} />
             <Route path="warehouses" element={<WarehousePage />} />
           </Route>
           <Route path="/portal" element={<PortalPage />} />

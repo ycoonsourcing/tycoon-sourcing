@@ -1,5 +1,5 @@
 // src/services/withdrawalService.js
-import { supabase } from './supabaseClient';
+import { loadSupabase } from './supabase';
 import { sendWithdrawalApprovedEmail } from './emailService';
 
 /**

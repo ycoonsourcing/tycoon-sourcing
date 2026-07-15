@@ -1,7 +1,7 @@
-// src/pages/AdminPage.jsx (Updated section for withdrawal approvals)
+// src/pages/AdminPage.jsx
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../services/supabaseClient';
-import { approveWithdrawal, rejectWithdrawal } from '../services/withdrawalService';
+import { loadSupabase } from '../lib/supabase';
+import { approveWithdrawal, rejectWithdrawal } from '../lib/withdrawalService';
 import './AdminPage.css';
 
 export default function AdminPage() {
